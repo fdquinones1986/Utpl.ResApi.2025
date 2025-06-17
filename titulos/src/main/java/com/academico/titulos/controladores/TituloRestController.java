@@ -2,21 +2,30 @@ package com.academico.titulos.controladores;
 
 import org.springframework.web.bind.annotation.RestController;
 import com.academico.titulos.dtos.TituloDto;
+import com.academico.titulos.entidades.Titulo;
+import com.academico.titulos.servicios.TituloService;
 
 import io.swagger.v3.oas.annotations.Operation;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
 
 @RestController
 @RequestMapping("/api/titulos")
 public class TituloRestController {
     // Lista en memoria para almacenar los títulos
     private final List<TituloDto> titulos = new ArrayList<>();
+
+    @Autowired
+	private TituloService tituloService;
 
     // Constructor para inicializar datos de ejemplo
     public TituloRestController() {
@@ -34,12 +43,22 @@ public class TituloRestController {
         return titulos;
     }
 
-    // Obtener un título por índice
-    @GetMapping("/{id}")
-    public TituloDto getTitulo(@PathVariable int id) {
-        if (id >= 0 && id < titulos.size()) {
-            return titulos.get(id);
+    // Obtener un título por identificacion
+    @GetMapping("/{identificacion}")
+    public Titulo getTitulo(@PathVariable String identificacion) {
+        var titulos = tituloService.BuscarPorIdentificacion(identificacion);
+        if (titulos.isEmpty()) {
+            return null; // O lanzar una excepción si no se encuentra
         }
-        throw new IllegalArgumentException("ID no válido");
+        System.out.println("Obteniendo título para la identificación: " + identificacion);
+        // Retornar el primer título encontrado
+        return titulos.get(0);
     }
+
+    // Metodo para eliminar un titulo por identificacion
+    @DeleteMapping("/{identificacion}")
+    public ResponseEntity<Void> deleteTitulo(@PathVariable String identificacion) {
+        tituloService.EliminarPorIdentificacion(identificacion);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }  
 }
