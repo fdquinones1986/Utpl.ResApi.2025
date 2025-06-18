@@ -17,6 +17,7 @@ FROM openjdk:21-jdk
 VOLUME /tmp
 
 # Copy the JAR from the build stage
+# This assumes the JAR is located in the target directory after the build
 COPY --from=build /app/target/*.jar app.jar
 RUN ls -al
 ENTRYPOINT ["java","-jar","/app.jar"]
