@@ -15,4 +15,5 @@ public interface TituloRepository extends JpaRepository<Titulo,Integer>{
       public List<Titulo> findByIdentification(String identification);
       @Transactional
       public long deleteByIdentification(String identification); 
+      public List<Titulo> findAll();
 }

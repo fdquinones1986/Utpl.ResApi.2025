@@ -25,6 +25,11 @@ public class TituloService implements ITituloService {
         tituloRepository.deleteByIdentification(identification);
     }
 
+    @Override
+    public List<Titulo> ObtenerTodos() {
+        return tituloRepository.findAll();
+    }
+
 
     
 }

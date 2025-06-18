@@ -39,8 +39,21 @@ public class TituloRestController {
     @GetMapping("/")
     @Operation(summary = "Obtener todos los titulos")
     public List<TituloDto> getAllTitulos() {
+        var titulos = tituloService.ObtenerTodos();
+        //obtener los titulos y convertirlos a TituloDto
+        List<TituloDto> titulosDto = new ArrayList<>();
+        for (Titulo titulo : titulos) {
+            TituloDto tituloDto = new TituloDto(titulo.getFirstName(), titulo.getLastName());
+            titulosDto.add(tituloDto);
+        }
         System.out.println("Obteniendo todos los títulos");
-        return titulos;
+        // Retornar la lista de títulos
+        if (titulosDto.isEmpty()) {
+            System.out.println("No se encontraron títulos");
+            return new ArrayList<>(); // Retornar una lista vacía si no hay títulos
+        }
+        System.out.println("Se encontraron " + titulosDto.size() + " títulos");
+        return titulosDto;
     }
 
     // Obtener un título por identificacion
