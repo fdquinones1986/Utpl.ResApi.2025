@@ -1,29 +1,23 @@
 package com.academico.titulos.dtos;
 
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@AllArgsConstructor
+@Getter @Setter
+@NoArgsConstructor
 public class TituloDto {
     private String nombreEstudiante;
+    private String apellidoEstudiante;
     private String carrera;
 
     // Constructor
-    public TituloDto(String nombreEstudiante, String carrera) {
+    public TituloDto(String nombreEstudiante, String apellidoEstudiante) {
         this.nombreEstudiante = nombreEstudiante;
-        this.carrera = carrera;
+        this.apellidoEstudiante = apellidoEstudiante;
     }
 
-    // Getters y Setters
-    public String getNombreEstudiante() {
-        return nombreEstudiante;
-    }
-
-    public void setNombreEstudiante(String nombreEstudiante) {
-        this.nombreEstudiante = nombreEstudiante;
-    }
-
-    public String getCarrera() {
-        return carrera;
-    }
-
-    public void setCarrera(String carrera) {
-        this.carrera = carrera;
-    }
 }

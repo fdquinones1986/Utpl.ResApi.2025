@@ -14,6 +14,8 @@ public class TituloService implements ITituloService {
     @Autowired
     private TituloRepository tituloRepository;
 
+     
+
 
     @Override
     public List<Titulo> BuscarPorIdentificacion(String identification) {
@@ -27,7 +29,14 @@ public class TituloService implements ITituloService {
 
     @Override
     public List<Titulo> ObtenerTodos() {
+        
         return tituloRepository.findAll();
+    }
+
+    @Override
+    public Titulo Guardar(Titulo titulo) {
+        
+        return tituloRepository.save(titulo);
     }
 
 

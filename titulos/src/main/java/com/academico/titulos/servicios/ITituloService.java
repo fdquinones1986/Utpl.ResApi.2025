@@ -8,4 +8,5 @@ public interface ITituloService {
     public List<Titulo> BuscarPorIdentificacion(String identification); 
     public void EliminarPorIdentificacion(String identification);
     public List<Titulo> ObtenerTodos(); 
+    public Titulo Guardar(Titulo titulo); 
 }
