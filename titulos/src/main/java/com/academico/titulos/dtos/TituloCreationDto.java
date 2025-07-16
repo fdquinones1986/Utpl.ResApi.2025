@@ -15,4 +15,6 @@ public class TituloCreationDto {
 
     private String identification;
 
+    private String career;
+
 }

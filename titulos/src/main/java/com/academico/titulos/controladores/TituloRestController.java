@@ -108,6 +108,7 @@ public class TituloRestController {
         tituloE.setFirstName(tituloDto.getFirstName());
         tituloE.setLastName(tituloDto.getLastName());
         tituloE.setIdentification(tituloDto.getIdentification());
+        tituloE.setCareer(tituloDto.getCareer());
 
         var titulo = tituloService.Guardar(tituloE);
         System.out.println("Título guardado: " + tituloDto.getFirstName() + " " + tituloDto.getLastName());
@@ -122,7 +123,7 @@ public class TituloRestController {
             Context context = new Context();
             context.setVariable("titulo", tituloDto);
 
-            emailService.sendHtmlMessage("fdquinones@utpl.edu.ec", "Notificacion de prueba", "EmailTemplate", context);
+            emailService.sendHtmlMessage("fdquinones@utpl.edu.ec", "Notificacion de prueba", "TituloTemplate", context);
         } catch (MessagingException e) {
             // Manejar la excepción, por ejemplo, imprimir el error o registrar
             System.err.println("Error al enviar el correo: " + e.getMessage());
@@ -155,7 +156,7 @@ public class TituloRestController {
             Context context = new Context();
             context.setVariable("titulo", tituloDto);
 
-            emailService.sendHtmlMessage("fdquinones@utpl.edu.ec", "Notificacion de prueba", "EmailTemplate", context);
+            emailService.sendHtmlMessage("fdquinones@utpl.edu.ec", "Notificacion de prueba", "TituloTemplate", context);
         } catch (MessagingException e) {
             // Manejar la excepción, por ejemplo, imprimir el error o registrar
             System.err.println("Error al enviar el correo: " + e.getMessage());

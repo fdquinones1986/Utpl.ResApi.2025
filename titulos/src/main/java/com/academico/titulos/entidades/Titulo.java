@@ -29,5 +29,7 @@ public class Titulo  implements Serializable{
   private String lastName;
   
   private String identification;
+
+  private String career;
  
 }

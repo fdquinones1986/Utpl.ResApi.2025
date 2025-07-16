@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title th:text="${subject}">Email Template</title>
+    <title th:text="${subject}">Notificación de Título Creado</title>
     <style>
         body {
             font-family: Helvetica, Arial, sans-serif;
@@ -45,12 +45,13 @@
         <div class="header">
             <a href="#" class="brand">GeeksForGeeks</a>
         </div>
-        <h3>Hola se ha creado un titulo para <span th:text="${titulo.firstName}"></span> <span th:text="${titulo.lastName}"></span>!</h3>
+        <h3>¡Hola! Se ha creado un título para <span th:text="${titulo.nombreEstudiante}"></span> <span th:text="${titulo.apellidoEstudiante}"></span>.</h3>
+        <p>Este título corresponde a la carrera de: <strong th:text="${titulo.carrera}"></strong>.</p>
         <p th:text="${message}"></p>
         <br><br>
         <div class="footer">
-            <p>Thank You</p>
-            <p>GFG Team.</p>
+            <p>Gracias,</p>
+            <p>El equipo de UTPL.</p>
         </div>
     </div>
 </body>
